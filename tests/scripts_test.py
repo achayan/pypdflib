@@ -10,7 +10,7 @@
 # pypdflib is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.  
+# (at your option) any later version.
 #
 # pypdflib is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -37,41 +37,53 @@ if __name__=="__main__":
     footer.set_text("test footer")
     #TODO Alignment not working.
     pdf.set_footer(footer)
-    h1= Text("Samples",font_size=16) 
+    h1= Text("Samples",font_size=16)
     pdf.add_text(h1)
-    h2= Text("Malayalam",font_size=14) 
+    h2= Text("Malayalam",font_size=14)
     h2.color = StandardColors.Blue
     pdf.add_text(h2)
-    
+
     para_file_malayalam=open("malayalam.txt")
-    #image = Image(image_file="Four_Sons_of_Dasaratha.png")
-    #pdf.add_image(image)
+
+    image = Image(image_file="kerala.jpg")
+    pdf.add_image(image)
+    image.clearTempImage(image.image_file)
+
+
     while True:
         para_content = para_file_malayalam.readline()
-        if para_content ==None or para_content=="" : break 
+        if para_content ==None or para_content=="" : break
         para = Paragraph(text=para_content, font="Rachana")
         para.language = "ml_IN"
         pdf.add_paragraph(para)
-    h2= Text("Hindi",font_size=14, font="Rachana") 
+    h2= Text("Hindi",font_size=14, font="Rachana")
     h2.color = Color(0.0,0.0,0.8,1.0)
     pdf.add_text(h2)
     para_file_hindi=open("hindi.txt")
-    
+
+    image = Image(image_file="Smc-logo.bmp")
+    pdf.add_image(image)
+    image.clearTempImage(image.image_file)
+
     while True:
         para_content = para_file_hindi.readline()
-        if para_content ==None or para_content=="" : break 
+        if para_content ==None or para_content=="" : break
         para = Paragraph(text=para_content)
         para.language = "hi_IN"
         pdf.add_paragraph(para)
-        
-    h2= Text("Bengali",font_size=14) 
+
+    h2= Text("Bengali",font_size=14)
     h2.color = Color(0.0,0.0,0.8,1.0)
-    pdf.add_text(h2)   
-     
+    pdf.add_text(h2)
+
+    image = Image(image_file="Smc-logo.bmp")
+    pdf.add_image(image)
+    image.clearTempImage(image.image_file)
+
     para_file_bengali=open("bengali.txt")
     while True:
         para_content = para_file_bengali.readline()
-        if para_content ==None or para_content=="" : break 
+        if para_content ==None or para_content=="" : break
         para = Paragraph(text=para_content)
         para.language = "bn_IN"
         pdf.add_paragraph(para)
@@ -79,6 +91,10 @@ if __name__=="__main__":
     h2 = Text("Kannada",font_size=14)
     h2.color = Color(0.0,0.0,0.8,1.0)
     pdf.add_text(h2)
+
+    image = Image(image_file="Smc-logo.jpg")
+    pdf.add_image(image)
+    image.clearTempImage(image.image_file)
 
     para_file_kannada = open("kannada.txt")
     while True:
@@ -92,6 +108,10 @@ if __name__=="__main__":
     h2.color = Color(0.0,0.0,0.8,1.0)
     pdf.add_text(h2)
 
+    image = Image(image_file="Smc-logo.png")
+    pdf.add_image(image)
+    image.clearTempImage(image.image_file)
+
     para_file_tamil = open("tamil.txt")
     while True:
         para_content = para_file_tamil.readline()
@@ -99,10 +119,10 @@ if __name__=="__main__":
         para = Paragraph(text=para_content)
         para.language = "ta_IN"
         pdf.add_paragraph(para)
-    
+
     h2 = Text("Arabic",font_size=14)
     h2.color = Color(0.0,0.0,0.8,1.0)
-    pdf.add_text(h2)    
+    pdf.add_text(h2)
     para_file_tamil = open("arabic.txt")
     while True:
         para_content = para_file_tamil.readline()
@@ -113,7 +133,7 @@ if __name__=="__main__":
         pdf.add_paragraph(para)
     h2 = Text("Japanese",font_size=14)
     h2.color = Color(0.0,0.0,0.8,1.0)
-    pdf.add_text(h2)    
+    pdf.add_text(h2)
     para_file_tamil = open("japanese.txt")
     while True:
         para_content = para_file_tamil.readline()
@@ -121,7 +141,7 @@ if __name__=="__main__":
         para = Paragraph(text=para_content)
         para.language = "jp_JP"
         #para.set_justify(False)
-        pdf.add_paragraph(para)            
+        pdf.add_paragraph(para)
     pdf.flush()
     """
     table = Table(border_width=1)
@@ -131,7 +151,7 @@ if __name__=="__main__":
         row.add_cell(cell)
     for i in range(4):
         table.add_row(row)
-        
+
     pdf.draw_table(table)
     pdf.flush()
     """
